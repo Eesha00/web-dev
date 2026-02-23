@@ -1,0 +1,311 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+.container {
+    background-color: white;
+    padding: 50px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.header h1 {
+    font-size: 2.8em;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.header h3 {
+    font-size: 1.3em;
+    color: #7f8c8d;
+    font-weight: 400;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+hr {
+    border: none;
+    height: 3px;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    margin: 25px 0;
+    border-radius: 2px;
+}
+
+.contact-info {
+    text-align: center;
+    margin: 25px 0;
+}
+
+.contact-info table {
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.contact-info td {
+    padding: 8px 15px;
+    font-size: 0.95em;
+    color: #555;
+}
+
+.contact-info a {
+    color: #667eea;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.contact-info a:hover {
+    color: #764ba2;
+    text-decoration: underline;
+}
+
+.summary {
+    text-align: center;
+    margin: 30px 0;
+    padding: 25px 30px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+.summary p {
+    color: #555;
+    line-height: 1.8;
+    font-size: 1.05em;
+}
+
+h3 {
+    font-size: 1.5em;
+    color: #2c3e50;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding-left: 15px;
+}
+
+h3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 70%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 2px;
+}
+
+.job-header {
+    width: 100%;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    padding: 15px;
+    background: rgba(102, 126, 234, 0.03);
+    border-radius: 6px;
+    border-left: 3px solid #667eea;
+}
+
+.job-header td {
+    padding: 5px 0;
+}
+
+.job-header .company {
+    font-weight: bold;
+    font-size: 1.15em;
+    color: #2c3e50;
+}
+
+.job-header .location {
+    text-align: right;
+    font-weight: 600;
+    color: #667eea;
+}
+
+.job-header .title {
+    font-style: italic;
+    color: #7f8c8d;
+    font-size: 1.02em;
+}
+
+.job-header .date {
+    text-align: right;
+    font-style: italic;
+    color: #7f8c8d;
+    font-size: 0.95em;
+}
+
+ul {
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+ul li {
+    margin-bottom: 10px;
+    line-height: 1.7;
+    color: #555;
+    position: relative;
+    padding-left: 10px;
+}
+
+ul li::marker {
+    color: #667eea;
+    font-weight: bold;
+}
+
+.education-header {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    padding: 15px;
+    background: rgba(102, 126, 234, 0.03);
+    border-radius: 6px;
+    border-left: 3px solid #764ba2;
+}
+
+.education-header .degree {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #2c3e50;
+}
+
+.education-header .gpa {
+    text-align: right;
+    font-weight: bold;
+    color: #667eea;
+}
+
+.education-header .school {
+    color: #555;
+    font-size: 1.02em;
+}
+
+.education-header .grad-date {
+    text-align: right;
+    font-style: italic;
+    color: #7f8c8d;
+}
+
+.skills {
+    display: grid;
+    gap: 15px;
+}
+
+.skills p {
+    padding: 12px 15px;
+    background: rgba(102, 126, 234, 0.03);
+    border-radius: 6px;
+    line-height: 1.8;
+    color: #555;
+    border-left: 3px solid #667eea;
+}
+
+.skills p b {
+    color: #2c3e50;
+    display: inline-block;
+    min-width: 180px;
+    font-weight: 600;
+}
+
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+
+    .container {
+        box-shadow: none;
+        padding: 20px;
+        border-radius: 0;
+    }
+
+    h3::before {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 20px 10px;
+    }
+
+    .container {
+        padding: 30px 20px;
+        border-radius: 5px;
+    }
+
+    .header h1 {
+        font-size: 2em;
+    }
+
+    .header h3 {
+        font-size: 1em;
+        letter-spacing: 2px;
+    }
+
+    .contact-info table {
+        font-size: 0.85em;
+    }
+
+    .contact-info td {
+        padding: 5px 8px;
+    }
+
+    .summary {
+        padding: 20px 15px;
+    }
+
+    .skills p b {
+        min-width: 130px;
+    }
+
+    h3 {
+        font-size: 1.3em;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-info table tr {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .contact-info td {
+        display: inline-block;
+    }
+
+    .job-header .location,
+    .job-header .date,
+    .education-header .gpa,
+    .education-header .grad-date {
+        text-align: left;
+        display: block;
+        margin-top: 5px;
+    }
+}
