@@ -1,16 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
 .top-bar-dark {
-    background-color: black;
+    background-color: #121212;
     color: white;
     text-align: center;
     padding: 12px;
     font-size: 13px;
 }
 
+.second-bar-wrapper {
+    width: 100%;
+    border-bottom: 1px solid #e0e0e0; /* The line now stretches all the way across */
+}
+
 .second-bar { 
-    text-align: center;
-    padding: 10px; 
-    font-size: 13px;
-    border-bottom: 1px solid lightgrey;
+    padding: 10px 20px; 
+    font-size: 15px; 
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    max-width: 1100px; 
+    margin: 0 auto; 
+}
+
+
+
+.arrow-btn {
+    background: transparent; 
+    border: none; 
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+    padding: 0; 
 }
 
 .logo-container {
@@ -21,19 +52,13 @@
     justify-content: center;
 }
 
-.logo-container a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .logo {
     font-family: 'Times New Roman', Times, serif;
     font-size: 28px;
     font-weight: 400;
     letter-spacing: 2px;
     margin: 0;
-    color: #111;
+    color: #000;
 }
 
 .logo-sub {
@@ -41,36 +66,41 @@
     font-size: 8px;
     font-weight: 600;
     letter-spacing: 3px;
-    color: #555;
+    color: #666;
     margin-top: 2px;
 }
 
-.logo-box{
-    padding-right: 10px;
-    padding-left: 10px;
-}
 .menu-box ul {
     display: flex;
     list-style: none;
     gap: 25px;
     margin: 0; 
     padding: 0; 
+    color: #121212BF;
 }
 
 .menu-box a {
-    text-decoration: none; /* Removes the underline */
-    color: black;
-    font-size: 14px;
+    text-decoration: none;
+    color: #000;
+    font-size: 13px;
+    font-weight: 500;
 }
+
 .icons-box{
     display: flex;
     gap:15px;
 }
-.main-header{
+
+.main-header {
     display: flex;
     justify-content: space-between;
-    padding: 5px;
+    align-items: center;
+    padding: 15px 20px; 
+    max-width: 1100px; /* This is the magic number that brings everything closer */
+    margin: 0 auto; /* Keeps the whole header perfectly centered on the page */
 }
+
+
 .banner-container {
     width: 100%;       /* Spans the full width of the screen */
     text-align: center; /* Ensures the image stays centered */
@@ -83,8 +113,11 @@
     display: block;     /* Makes the image a 'block' so we can move it */
     margin: 0 auto;     /* The magic spell that centers block elements! */
 }
+
 .deals-section {
-    padding: 40px;
+    max-width: 1150px; 
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .section-title {
@@ -97,36 +130,48 @@
 
 .cards-container {
     display: flex;
-    gap: 15px;
+    gap: 8px;
+    justify-content: center;
 }
 
 .product-card {
     flex: 1;
+    max-width: 190px; 
     border: 1px solid #e0e0e0;
-    padding: 10px;
+    padding: 0; 
     text-align: left;
     position: relative;
     background-color: white;
+    overflow: hidden;
 }
 
 .product-card img {
     width: 100%;
     height: auto;
-    margin-bottom: 12px;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.08); /* Zooms the image in by 8% */
 }
 
 .product-title {
     font-size: 13px;
     font-weight: normal;
-    margin-bottom: 6px;
     color: #555;
     text-transform: uppercase;
+    padding: 15px 10px 5px 10px; 
+    margin: 0;
 }
 
 .product-price {
     font-size: 14px;
     font-weight: bold;
     color: #111;
+    padding: 0 10px 15px 10px; 
+    margin: 0;
+    border-top: none; /* Bye-bye grey line! */
 }
 
 .product-price del {
@@ -140,15 +185,22 @@
     position: absolute;
     top: 15px;
     left: 15px;
-    background-color: #666;
+    background-color: #e32b1b;
     color: white;
     padding: 3px 10px;
     font-size: 11px;
     border-radius: 12px;
 }
 
+.deals-section-wrapper {
+    width: 100%;
+    padding: 40px 0;
+}
+
 .best-sellers-section {
-    padding: 40px;
+    padding: 40px 20px; 
+    max-width: 1100px; 
+    margin: 0 auto; 
 }
 
 .best-sellers-grid {
@@ -158,8 +210,9 @@
 }
 
 .best-seller-card {
-    border: 1px solid #e0e0e0;
-    padding: 10px;
+    border: none; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* This is the magic shadow! */
+    padding: 0; /* Removes padding so the image touches the edges */
     text-align: left;
     position: relative;
     background-color: white;
@@ -168,21 +221,55 @@
 .best-seller-card img {
     width: 100%;
     height: auto;
-    margin-bottom: 10px;
+    display: block;
+}
+
+/* Container holds both images in the same spot */
+.product-image-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Base style for both images */
+.product-image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.4s ease; /* Makes the swap look smooth and fade-y */
+}
+
+/* Hide the hover image by making it invisible */
+.hover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+/* THE SWAP: When the card is hovered... */
+.best-seller-card:hover .primary-img {
+    opacity: 0; /* Fade out the main image */
+}
+
+.best-seller-card:hover .hover-img {
+    opacity: 1; /* Fade in the second image */
 }
 
 .item-title {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: normal;
     color: #444;
-    margin-bottom: 8px;
-    height: 35px;
+    margin: 0;
+    padding: 15px 10px 5px 10px;
+    min-height: 45px; /* Keeps the cards the same height even if a title is long */
 }
 
 .stars {
     color: #ffd700;
     font-size: 14px;
-    margin-bottom: 8px;
+    padding: 0 10px;
+    margin-bottom: 12px;
 }
 
 .reviews {
@@ -194,6 +281,9 @@
     font-size: 14px;
     font-weight: bold;
     color: #111;
+    border-top: 1px solid #eeeeee; /* Here is your grey line! */
+    padding: 12px 10px; 
+    margin: 0 10px; /* Keeps the line slightly pulled in from the edges */
 }
 
 .item-price del {
@@ -251,11 +341,48 @@
     margin-bottom: 50px;
 }
 
-.reviews-grid {
-    display: flex;
-    justify-content: center;
-    gap: 80px;
+
+.reviews-wrapper {
+    width: 100%;
     max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden; 
+}
+
+.reviews-track {
+    display: flex;
+    width: max-content; /* Lets the track stretch as far as it needs */
+    animation: scrollReviews 20s linear infinite; /* 20s is the speed */
+}
+
+/* Pauses the animation when someone hovers over it to read! */
+.reviews-wrapper:hover .reviews-track {
+    animation-play-state: paused;
+}
+.review-group {
+    display: flex;
+    gap: 80px;
+    padding-right: 80px; /* This padding ensures a perfect gap right before the loop restarts */
+}
+
+/* This is the animation that pushes the track to the left */
+@keyframes scrollReviews {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Moves it exactly half its width, making the duplicate take over seamlessly */
+}
+
+/* Styling for the new names and images at the bottom of the reviews */
+.reviewer-name {
+    font-size: 13px;
+    color: #999;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.review-product-img {
+    width: 50px; /* Small product picture just like the original */
+    height: auto;
+    display: block;
     margin: 0 auto;
 }
 
@@ -282,6 +409,28 @@
     font-size: 16px;
     color: #555555;
     line-height: 1.4;
+}
+
+.review-controls {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* The space between the two arrows */
+    margin-top: 30px; /* Space above the arrows */
+}
+
+.review-arrow {
+    background: transparent;
+    border: none;
+    font-size: 35px; /* Makes them nice and big */
+    font-weight: 300; /* Keeps them relatively thin */
+    color: #dbdbdb; /* That exact light grey from the original */
+    cursor: pointer;
+    transition: color 0.3s ease; /* Smooth color change on hover */
+}
+
+/* Makes them slightly darker when you hover over them */
+.review-arrow:hover {
+    color: #999999; 
 }
 
 .main-footer {
@@ -365,4 +514,27 @@
     font-size: 12px;
     color: #cccccc;
     text-align: left;
+}
+
+/* FLOATING CART BUTTON */
+.floating-cart {
+    position: fixed; /* This makes it stick to the screen, not the page! */
+    bottom: 30px;    /* 30px away from the bottom of the monitor */
+    right: 30px;      /* 30px away from the left edge */
+    background-color: #222222; /* The dark grey/black color */
+    width: 65px;
+    height: 65px;
+    border-radius: 50%; /* Turns the square into a perfect circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Creates the floating shadow effect */
+    z-index: 10000; /* Ensures it is always layered ON TOP of every other image or text */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Adds a nice little 'pop' effect when the user hovers over it */
+.floating-cart:hover {
+    transform: scale(1.1); /* Grows slightly */
+    background-color: #000000; /* Darkens slightly */
 }
