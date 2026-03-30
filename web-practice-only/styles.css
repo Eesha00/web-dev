@@ -1,8 +1,26 @@
-.box{
-    background-color: teal;
-    height:200px;
-    color:pink;
-    text-align: center;
-    padding-top:10px;
+.nav {
+  display: flex;
+  flex-wrap: wrap; /* important */
 }
 
+.nav a {
+  width: 100%; /* mobile default */
+  padding: 10px;
+  background: lightgray;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Tablet (≥ 600px) */
+@media (min-width: 600px) {
+  .nav a {
+    width: 50%;
+  }
+}
+
+/* Desktop (≥ 900px) */
+@media (min-width: 900px) {
+  .nav a {
+    width: 25%;
+  }
+}
