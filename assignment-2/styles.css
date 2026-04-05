@@ -1,52 +1,128 @@
+/* ============================================
+   GLOBAL RESET & BASE STYLES
+   ============================================
+   Purpose: Remove default browser styling and apply consistent base styles
+   across all elements for a clean slate */
+
+/* Universal selector (*): Applies to ALL HTML elements on the page */
 * {
+    /* margin: 0: Removes default spacing outside elements (between element and siblings) */
     margin: 0;
+    
+    /* padding: 0: Removes default spacing inside elements (between element and its content) */
     padding: 0;
+    
+    /* box-sizing: border-box: Changes how element width/height are calculated
+       - Includes padding and border in the total width/height
+       - Makes box model predictable and easier to work with
+       - Without this, padding/border adds to the element size */
     box-sizing: border-box;
 }
 
+/* Body element: Main content container for the entire page */
 body {
     margin: 0;
     padding: 0;
+    /* font-family: Arial, sans-serif: Sets default font for entire page
+       - Arial is modern sans-serif (no serifs/flourishes)
+       - sans-serif is fallback if Arial unavailable
+       - This ensures consistent typography throughout site */
     font-family: Arial, sans-serif;
 }
 
+/* ============================================
+   TOP NAVIGATION BARS
+   ============================================ */
+
+/* Top bar dark: Dark promotional banner at page top */
 .top-bar-dark {
+    /* background-color: #121212: Sets dark gray/black background color (hex color code)
+       #121212 is very dark gray, almost pure black, used for contrast with white text */
     background-color: #121212;
+    
+    /* color: white: Sets text color to white for high contrast */
     color: white;
+    
+    /* text-align: center: Centers the promotional text horizontally */
     text-align: center;
+    
+    /* padding: 12px: Adds 12px space inside element (between border and content)
+       This creates breathing room around the text */
     padding: 12px;
+    
+    /* font-size: 13px: Makes the text slightly smaller (smaller than default 16px)
+       Used for secondary/less important information */
     font-size: 13px;
 }
 
+/* Second bar wrapper: Container for customer satisfaction bar
+   Purpose: contains the scrollable customer testimonials bar */
 .second-bar-wrapper {
     width: 100%;
+    /* border-bottom: 1px solid #e0e0e0: Adds thin light gray line at bottom
+       Creates visual separation between sections
+       #e0e0e0 is a light gray color */
     border-bottom: 1px solid #e0e0e0;
 }
 
+/* Second bar: Contains customer count and navigation arrows */
 .second-bar {
     padding: 10px 20px;
     font-size: 15px;
+    /* display: flex: Uses flexbox layout model
+       Flexbox makes arranging items horizontally/vertically much easier
+       Provides: justify-content, align-items, gap control */
     display: flex;
+    
+    /* justify-content: space-between: Distributes flex items with maximum space between them
+       - Left arrow moves to left edge
+       - Customer count stays in middle
+       - Right arrow moves to right edge */
     justify-content: space-between;
+    
+    /* align-items: center: Vertically centers all flex items
+       All items align to the vertical center of the container */
     align-items: center;
+    
+    /* max-width: 1100px: Limits maximum width to prevent content from being too wide
+       Provides better readability on ultra-wide screens */
     max-width: 1100px;
+    
+    /* margin: 0 auto: Centers the container horizontally
+       0 for top/bottom margins, auto for left/right (auto centers) */
     margin: 0 auto;
 }
 
+/* Arrow buttons: Navigation arrows in the second bar */
 .arrow-btn {
+    /* background: transparent: Makes button background invisible
+       Removes default gray button background */
     background: transparent;
+    
+    /* border: none: Removes default button border
+       Creates a borderless button appearance */
     border: none;
+    
     font-size: 20px;
+    
+    /* cursor: pointer: Changes mouse cursor to hand pointer on hover
+       Indicates to user that element is clickable */
     cursor: pointer;
+    
     color: #333;
     padding: 0;
 }
 
 /* ============================================
-   MAIN HEADER — Desktop
-   ============================================ */
+   MAIN HEADER — Desktop Layout
+   ============================================
+   Purpose: Top navigation bar with logo and icons
+   Layout: Uses flexbox for responsive positioning */
+
 .main-header {
     display: flex;
+    /* justify-content: space-between: Creates 3 sections - hamburger, logo, icons
+       Push items to edges with space between for maximum separation */
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
@@ -55,70 +131,113 @@ body {
     position: relative;
 }
 
-/* Hamburger — hidden on desktop */
+/* ============================================
+   HAMBURGER BUTTON (Mobile Navigation Toggle)
+   ============================================
+   Purpose: Toggle button that opens/closes mobile side menu
+   Hidden by default on desktop, shown only on tablets/mobile */
+
 .hamburger-btn {
+    /* display: none: Hides element on desktop view
+       Shown later in media queries for mobile/tablet */
     display: none;
+    
+    /* flex-direction: column: Stacks flex items vertically (hamburger lines stack top to bottom) */
     flex-direction: column;
+    
+    /* justify-content: space-between: Creates equal spacing between the 3 hamburger lines */
     justify-content: space-between;
+    
     width: 26px;
     height: 20px;
     background: transparent;
     border: none;
     cursor: pointer;
     padding: 0;
+    /* flex-shrink: 0: Prevents button from shrinking if space is limited
+       Keeps button at consistent size regardless of available space */
     flex-shrink: 0;
 }
 
+/* Hamburger lines (the three horizontal spans inside button) */
 .hamburger-btn span {
     display: block;
     width: 100%;
     height: 2px;
+    /* background-color: #111: Sets line color to almost-black
+       #111 is slightly softer than pure black (#000) */
     background-color: #111;
+    /* border-radius: 2px: Slightly rounds the corners of each line
+       Makes lines appear smoother, less sharp */
     border-radius: 2px;
 }
 
-/* LOGO */
+/* ============================================
+   LOGO SECTION (Center of Header)
+   ============================================ */
+
+/* Logo container: Centers the brand name and tagline */
 .logo-container {
     text-align: center;
     display: flex;
+    /* flex-direction: column: Stacks logo name and subtitle vertically */
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
+/* Logo heading: Main brand name */
 .logo {
+    /* font-family: 'Times New Roman', Times, serif: Uses elegant serif typeface
+       Times New Roman is classic, sophisticated font with decorative serifs
+       serif is fallback if Times New Roman unavailable */
     font-family: 'Times New Roman', Times, serif;
     font-size: 28px;
+    /* font-weight: 400: Sets font weight to normal (not bold)
+       400 is standard/normal weight, 700 or higher would be bold */
     font-weight: 400;
+    /* letter-spacing: 2px: Increases space between individual letters
+       Creates elegant, spaced-out appearance */
     letter-spacing: 2px;
     margin: 0;
     color: #000;
 }
 
+/* Logo subtext: "Professional makeup" tagline under logo */
 .logo-sub {
     font-family: Arial, sans-serif;
     font-size: 8px;
+    /* font-weight: 600: Set to semi-bold (between normal 400 and bold 700)
+       Makes tagline heavier/more prominent */
     font-weight: 600;
     letter-spacing: 3px;
     color: #666;
     margin-top: 2px;
 }
 
-/* RIGHT SIDE wrapper */
+/* ============================================
+   HEADER RIGHT SIDE (Navigation + Icons)
+   ============================================ */
+
 .header-right {
     display: flex;
     align-items: center;
+    /* gap: 20px: Creates 20px space between flex items (menu and icons)
+       Alternative to margins, cleaner than separate margin properties */
     gap: 20px;
 }
 
+/* Navigation menu list styling */
 .menu-box ul {
     display: flex;
+    /* list-style: none: Removes default bullet points before list items */
     list-style: none;
     gap: 25px;
     margin: 0;
     padding: 0;
 }
 
+/* Navigation link styling */
 .menu-box a {
     text-decoration: none;
     color: #000;
@@ -126,20 +245,31 @@ body {
     font-weight: 500;
 }
 
-.menu-box a:hover { color: #e32b1b; }
+/* Navigation link hover effect: Changes color when mouse hovers over link */
+.menu-box a:hover { 
+    /* Pseudo-class :hover triggers styles when user hovers mouse over element */
+    color: #e32b1b;
+}
 
+/* Header icons container: Search, profile, cart icons */
 .icons-box {
     display: flex;
     gap: 15px;
     align-items: center;
 }
 
-.icons-box a svg { display: block; }
+/* SVG icons display as block elements */
+.icons-box a svg { 
+    display: block;
+}
 
 
 /* ============================================
-   DARK OVERLAY
-   ============================================ */
+   DARK OVERLAY (Behind Side Drawer)
+   ============================================
+   Purpose: Semi-transparent background that appears behind mobile menu
+   Helps focus attention on the menu and allows closing menu on overlay click */
+
 .drawer-overlay {
     display: none;
     position: fixed;
@@ -147,21 +277,36 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
+    /* background-color: rgba(0, 0, 0, 0.5): Semi-transparent black background
+       rgba = Red, Green, Blue, Alpha (transparency)
+       (0, 0, 0, 0.5) = Black color with 50% opacity/transparency
+       Allows user to see content behind overlay, but darkened */
     background-color: rgba(0, 0, 0, 0.5);
+    /* z-index: 998: Stacking order - overlay appears below drawer (drawer is 999)
+       Higher numbers = appear on top of elements with lower z-index */
     z-index: 998;
+    /* opacity: 0: Element is invisible (fully transparent)
+       Will transition to opacity: 1 when overlay-active class applied */
     opacity: 0;
+    /* transition: opacity 0.3s ease: Smoothly animates opacity change over 0.3 seconds
+       Creates fade-in/fade-out effect instead of instant appearance */
     transition: opacity 0.3s ease;
 }
 
+/* overlay-active class: Applied via JavaScript when menu opens */
 .drawer-overlay.overlay-active {
     display: block;
+    /* opacity: 1: Element becomes fully visible (opaque)
+       Combined with transition, creates smooth fade-in effect */
     opacity: 1;
 }
 
-
 /* ============================================
-   SIDE DRAWER
-   ============================================ */
+   SIDE DRAWER (Mobile Navigation Menu)
+   ============================================
+   Purpose: Slides-in menu for mobile devices containing navigation
+   Initially hidden off-screen, slides in when hamburger button clicked */
+
 .side-drawer {
     position: fixed;
     top: 0;
@@ -170,27 +315,44 @@ body {
     height: 100%;
     background-color: #ffffff;
     z-index: 999;
-    transform: translateX(-100%);       /* Off-screen left */
+    /* transform: translateX(-100%): Moves element left by 100% of its width
+       -100% means element is completely hidden to the left of screen
+       Used to hide drawer until user opens it */
+    transform: translateX(-100%);
+    /* transition: transform 0.35s ease: Smoothly animates the slideIn/slideOut effect
+       Moves drawer position smoothly over 0.35 seconds */
     transition: transform 0.35s ease;
     display: flex;
+    /* flex-direction: column: Stacks drawer sections vertically
+       Header at top, nav in middle, footer at bottom */
     flex-direction: column;
+    /* overflow-y: auto: Allows content to scroll vertically if too tall for screen
+       Y-axis = vertical axis */
     overflow-y: auto;
 }
 
+/* drawer-open class: Applied via JavaScript when menu should open */
 .side-drawer.drawer-open {
-    transform: translateX(0);           /* Slides in */
+    /* transform: translateX(0): Moves element back to original position (left: 0)
+       0 means no horizontal offset, drawer slides into view */
+    transform: translateX(0);
 }
 
-/* Top bar of drawer */
+/* Drawer header: Top section with close button, logo, icons */
 .drawer-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 14px 16px;
+    /* border-bottom: 1px solid #eee: Creates thin light gray line under header
+       Visual separator between drawer header and navigation content */
     border-bottom: 1px solid #eee;
+    /* flex-shrink: 0: Prevents header from shrinking when drawer content overflows
+       Keeps header at consistent height */
     flex-shrink: 0;
 }
 
+/* Close button: X button to close the drawer */
 .drawer-close-btn {
     background: transparent;
     border: none;
@@ -202,12 +364,16 @@ body {
     flex-shrink: 0;
 }
 
-.drawer-close-btn:hover { color: #e32b1b; }
+.drawer-close-btn:hover { 
+    color: #e32b1b;
+}
 
+/* Drawer logo container: Logo and tagline inside drawer */
 .drawer-logo-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* flex: 1: Takes up available space (pushes close button and icons to edges) */
     flex: 1;
     text-align: center;
 }
@@ -228,6 +394,7 @@ body {
     margin-top: 2px;
 }
 
+/* Drawer header icons: Search and cart icons in drawer header */
 .drawer-header-icons {
     display: flex;
     gap: 12px;
@@ -235,10 +402,14 @@ body {
     flex-shrink: 0;
 }
 
-.drawer-header-icons a svg { display: block; }
+.drawer-header-icons a svg { 
+    display: block;
+}
 
-/* Nav links */
+/* Drawer navigation section: Contains menu links */
 .drawer-nav {
+    /* flex: 1: Takes up all available vertical space in drawer
+       Pushes footer section to bottom */
     flex: 1;
     padding: 10px 0;
 }
@@ -249,6 +420,7 @@ body {
     margin: 0;
 }
 
+/* Navigation links styling inside drawer */
 .drawer-nav ul li a {
     display: block;
     padding: 16px 24px;
@@ -257,19 +429,26 @@ body {
     letter-spacing: 0.5px;
     color: #111;
     text-decoration: none;
+    /* border-bottom: 1px solid #f2f2f2: Thin line under each menu item
+       Creates visual separation between menu options */
     border-bottom: 1px solid #f2f2f2;
+    /* transition: background-color, color 0.2s ease: Smoothly animates both properties
+       On hover, creates smooth color transition effects */
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .drawer-nav ul li a:hover {
+    /* background-color: #fafafa: Very light gray background on hover
+       #fafafa is nearly white with slight gray tint */
     background-color: #fafafa;
     color: #e32b1b;
 }
 
-/* Footer: Log in + social */
+/* Drawer footer: Login and social icons at bottom */
 .drawer-footer {
     padding: 20px 24px;
     border-top: 1px solid #eee;
+    /* flex-shrink: 0: Prevents footer from shrinking, stays at bottom */
     flex-shrink: 0;
 }
 
@@ -284,29 +463,49 @@ body {
     margin-bottom: 20px;
 }
 
-.drawer-login:hover { color: #e32b1b; }
+.drawer-login:hover { 
+    color: #e32b1b;
+}
 
+/* Drawer social icons container */
 .drawer-social {
     display: flex;
     gap: 16px;
     align-items: center;
 }
 
-.drawer-social a svg { display: block; transition: opacity 0.2s ease; }
-.drawer-social a:hover svg { opacity: 0.5; }
+.drawer-social a svg { 
+    display: block;
+    /* transition: opacity 0.2s ease: Smoothly fades icon on hover */
+    transition: opacity 0.2s ease;
+}
+
+.drawer-social a:hover svg { 
+    /* opacity: 0.5: Makes icon semi-transparent on hover (50% opacity)
+       Creates hover effect indicating interactivity */
+    opacity: 0.5;
+}
 
 
 /* ============================================
-   BANNER
-   ============================================ */
+   BANNER SECTION
+   ============================================
+   Purpose: Large featured image at top of page
+   Creates visual impact and promotes current campaign */
+
 .banner-container {
     width: 100%;
     text-align: center;
     margin-top: 20px;
 }
 
+/* Banner image: Responsive image that scales with screen */
 .banner-image {
+    /* max-width: 100%: Image never grows wider than its container
+       Prevents image distortion on small screens */
     max-width: 100%;
+    /* height: auto: Maintains aspect ratio (width-to-height proportion)
+       Image scales proportionally when width changes */
     height: auto;
     display: block;
     margin: 0 auto;
@@ -314,7 +513,10 @@ body {
 
 /* ============================================
    DEALS SECTION
-   ============================================ */
+   ============================================
+   Purpose: Showcase special deal offers
+   Grid layout displays multiple deal cards */
+
 .deals-section-wrapper {
     width: 100%;
     padding: 40px 0;
@@ -326,22 +528,33 @@ body {
     padding: 0 20px;
 }
 
+/* Section titles: Used for multiple sections (Deals, Best Sellers, etc.) */
 .section-title {
     font-size: 22px;
+    /* letter-spacing: 1px: Increases space between letters in heading
+       Creates elegant, emphasis look for titles */
     letter-spacing: 1px;
     color: #333;
     margin-bottom: 20px;
+    /* text-transform: uppercase: Converts text to all uppercase letters
+       Makes heading more prominent and professional-looking */
     text-transform: uppercase;
 }
 
+/* Cards container: Flex layout for deal cards */
 .cards-container {
     display: flex;
     gap: 8px;
     justify-content: center;
+    /* flex-wrap: wrap: Allows items to wrap to next line if not enough space
+       Instead of shrinking, items move down (wraps like text) */
     flex-wrap: wrap;
 }
 
+/* Product card: Individual deal/product card */
 .product-card {
+    /* flex: 1: Takes equal space of available width among flex items
+       Makes cards responsive - 3 cards on wide screen, fewer on narrow */
     flex: 1;
     max-width: 190px;
     border: 1px solid #e0e0e0;
@@ -356,11 +569,19 @@ body {
     width: 100%;
     height: auto;
     display: block;
+    /* transition: transform 0.4s ease: Smoothly animates the zoom effect
+       Takes 0.4 seconds to complete the scale transformation */
     transition: transform 0.4s ease;
 }
 
-.product-card:hover img { transform: scale(1.08); }
+/* Hover effect: Zooms image when user hovers over card */
+.product-card:hover img { 
+    /* transform: scale(1.08): Enlarges image by 8% (1.08 = 108%)
+       Creates interactive zoom-in effect on hover */
+    transform: scale(1.08);
+}
 
+/* Product title styling */
 .product-title {
     font-size: 13px;
     font-weight: normal;
@@ -370,6 +591,7 @@ body {
     margin: 0;
 }
 
+/* Product price styling */
 .product-price {
     font-size: 14px;
     font-weight: bold;
@@ -378,13 +600,17 @@ body {
     margin: 0;
 }
 
+/* Strikethrough old price styling */
 .product-price del {
+    /* del HTML tag: Semantic tag indicating deleted/original text
+       Shows strikethrough styling by default in browsers */
     color: #999;
     font-weight: normal;
     margin-right: 6px;
     font-size: 12px;
 }
 
+/* Sale badge: "Sale" or "Sold out" label on product cards */
 .sale-badge {
     position: absolute;
     top: 15px;
@@ -393,26 +619,47 @@ body {
     color: white;
     padding: 3px 10px;
     font-size: 11px;
+    /* border-radius: 12px: Rounds the corners (creates pill shape)
+       12px creates very rounded look (like a capsule) */
     border-radius: 12px;
 }
 
 /* ============================================
-   BEST SELLERS
-   ============================================ */
+   BEST SELLERS SECTION
+   ============================================
+   Purpose: Showcase top-selling products
+   Grid layout arranges products in organized rows */
+
 .best-sellers-section {
     padding: 40px 20px;
     max-width: 1100px;
     margin: 0 auto;
 }
 
+/* Best sellers grid: CSS Grid instead of Flexbox for structured layout */
 .best-sellers-grid {
+    /* display: grid: Uses CSS Grid layout (different from Flexbox)
+       Grid: better for 2D layouts (rows AND columns)
+       Flexbox: better for 1D layouts (single row or column) */
     display: grid;
+    
+    /* grid-template-columns: repeat(5, 1fr): Creates 5 equal-width columns
+       repeat(5, 1fr) = repeat 5 times with 1fr width each
+       1fr = 1 fraction of available space (divides space equally)
+       On mobile, changed to repeat(3, 1fr) or repeat(2, 1fr) */
     grid-template-columns: repeat(5, 1fr);
+    
     gap: 15px;
 }
 
+/* Best seller card: Product card with shadow and image swap on hover */
 .best-seller-card {
     border: none;
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08): Subtle drop shadow effect
+       0 2px = no horizontal offset, 2px vertical offset (shadow below)
+       10px = blur radius (softer shadow with larger blur)
+       rgba(0, 0, 0, 0.08) = semi-transparent black (8% opacity)
+       Creates subtle depth effect */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
     padding: 0;
     text-align: left;
@@ -420,8 +667,13 @@ body {
     background-color: white;
 }
 
-.best-seller-card img { width: 100%; height: auto; display: block; }
+.best-seller-card img { 
+    width: 100%; 
+    height: auto; 
+    display: block;
+}
 
+/* Product image container: Enables image swap on hover */
 .product-image-container {
     position: relative;
     width: 100%;
@@ -435,36 +687,76 @@ body {
     transition: opacity 0.4s ease;
 }
 
-.hover-img { position: absolute; top: 0; left: 0; opacity: 0; }
-.best-seller-card:hover .primary-img { opacity: 0; }
-.best-seller-card:hover .hover-img   { opacity: 1; }
+/* Hover image: Hidden by default, shown on hover */
+.hover-img { 
+    /* position: absolute; top: 0; left: 0: Overlays hover image on primary image
+       Both images occupy same space - whichever is visible shows */
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
 
+/* Primary image disappears on hover */
+.best-seller-card:hover .primary-img { 
+    opacity: 0;
+}
+
+/* Hover image appears on hover */
+.best-seller-card:hover .hover-img { 
+    opacity: 1;
+}
+
+/* Product title in best sellers section */
 .item-title {
     font-size: 13px;
     font-weight: normal;
     color: #444;
     margin: 0;
     padding: 15px 10px 5px 10px;
+    /* min-height: 45px: Ensures consistent card height regardless of title length
+       Prevents cards from being different heights if titles vary */
     min-height: 45px;
 }
 
-.stars { color: #ffd700; font-size: 14px; padding: 0 10px; margin-bottom: 12px; }
-.reviews { color: #777; font-size: 12px; }
+/* Star rating display */
+.stars { 
+    color: #ffd700;
+    font-size: 14px;
+    padding: 0 10px;
+    margin-bottom: 12px;
+}
 
+/* Review count (number in parentheses after stars) */
+.reviews { 
+    color: #777;
+    font-size: 12px;
+}
+
+/* Product price with border separator */
 .item-price {
     font-size: 14px;
     font-weight: bold;
     color: #111;
+    /* border-top: 1px solid #eeeeee: Thin line separating price from content above
+       Visual separator creates clean division */
     border-top: 1px solid #eeeeee;
     padding: 12px 10px;
     margin: 0 10px;
 }
 
-.item-price del { color: #999; font-weight: normal; font-size: 12px; margin-right: 5px; }
+.item-price del { 
+    color: #999;
+    font-weight: normal;
+    font-size: 12px;
+    margin-right: 5px;
+}
 
 /* ============================================
-   VIEW ALL
-   ============================================ */
+   VIEW ALL BUTTON
+   ============================================
+   Purpose: Call-to-action button directing to full product lists */
+
 .view-all-wrapper {
     display: flex;
     justify-content: center;
@@ -483,56 +775,280 @@ body {
 }
 
 /* ============================================
-   VLOGGER & TESTIMONIALS
-   ============================================ */
-.vlogger-section { text-align: center; margin-bottom: 60px; }
-.vlogger-title { font-family: Arial, sans-serif; font-size: 36px; color: #444444; font-weight: bold; }
+   VLOGGER & TESTIMONIALS SECTIONS
+   ============================================
+   Purpose: Display influencer content and customer reviews
+   Creates trust and social proof for customers */
 
-.testimonials-section { text-align: center; font-family: Arial, sans-serif; padding-bottom: 80px; }
-.testimonials-title { font-size: 30px; color: #333333; margin-bottom: 5px; font-weight: normal; }
-.global-stars { color: #ffcc00; font-size: 22px; margin-bottom: 50px; }
-
-.reviews-wrapper { width: 100%; max-width: 1200px; margin: 0 auto; overflow: hidden; }
-.reviews-track { display: flex; width: max-content; animation: scrollReviews 20s linear infinite; }
-.reviews-wrapper:hover .reviews-track { animation-play-state: paused; }
-.review-group { display: flex; gap: 80px; padding-right: 80px; }
-
-@keyframes scrollReviews {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+/* Vlogger section: Section heading for influencer content */
+.vlogger-section { 
+    text-align: center;
+    margin-bottom: 60px;
 }
 
-.reviewer-name { font-size: 13px; color: #999; margin-top: 25px; margin-bottom: 10px; }
-.review-product-img { width: 50px; height: auto; display: block; margin: 0 auto; }
-.review-item { text-align: center; max-width: 260px; }
-.review-stars { color: #ffcc00; font-size: 24px; margin-bottom: 12px; }
-.review-heading { font-size: 17px; font-weight: bold; color: #333333; margin-bottom: 8px; line-height: 1.4; }
-.review-text { font-size: 16px; color: #555555; line-height: 1.4; }
+.vlogger-title { 
+    font-family: Arial, sans-serif;
+    font-size: 36px;
+    color: #444444;
+    font-weight: bold;
+}
 
-.review-controls { display: flex; justify-content: center; gap: 30px; margin-top: 30px; }
-.review-arrow { background: transparent; border: none; font-size: 35px; font-weight: 300; color: #dbdbdb; cursor: pointer; transition: color 0.3s ease; }
-.review-arrow:hover { color: #999999; }
+/* Testimonials section: Container for customer reviews */
+.testimonials-section { 
+    text-align: center;
+    font-family: Arial, sans-serif;
+    padding-bottom: 80px;
+}
+
+.testimonials-title { 
+    font-size: 30px;
+    color: #333333;
+    margin-bottom: 5px;
+    font-weight: normal;
+}
+
+/* Global star rating: Overall rating display */
+.global-stars { 
+    color: #ffcc00;
+    font-size: 22px;
+    margin-bottom: 50px;
+}
+
+/* Reviews wrapper: Container for reviews carousel */
+.reviews-wrapper { 
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* overflow: hidden: Clips/hides content that extends beyond container
+       Essential for carousel - prevents horizontal scrollbar from showing */
+    overflow: hidden;
+}
+
+/* Reviews track: The scrollable container with animation */
+.reviews-track { 
+    display: flex;
+    /* width: max-content: Width expands to fit all items
+       Allows horizontal scrolling/animation */
+    width: max-content;
+    /* animation: scrollReviews 20s linear infinite: Applies animation
+       scrollReviews = animation name
+       20s = takes 20 seconds to complete
+       linear = constant speed (not accelerating)
+       infinite = loops forever */
+    animation: scrollReviews 20s linear infinite;
+}
+
+/* Pause animation on hover: Better UX when user wants to read */
+.reviews-wrapper:hover .reviews-track { 
+    /* animation-play-state: paused: Pauses the animation
+       Allows user to read reviews without them sliding away */
+    animation-play-state: paused;
+}
+
+/* Review group: Group of reviews visible at one time */
+.review-group { 
+    display: flex;
+    gap: 80px;
+    padding-right: 80px;
+}
+
+/* Keyframe animation: Defines how carousel scrolls */
+@keyframes scrollReviews {
+    /* 0%: Animation start state */
+    0%   { 
+        /* No horizontal translation - items in normal position */
+        transform: translateX(0);
+    }
+    /* 100%: Animation end state */
+    100% { 
+        /* translate by -50%: Shifts left by 50% of total width
+           Creates continuous loop effect (second half mirrors first) */
+        transform: translateX(-50%);
+    }
+}
+
+/* Individual review item styling */
+.reviewer-name { 
+    font-size: 13px;
+    color: #999;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+/* Review product image (thumbnail) */
+.review-product-img { 
+    width: 50px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Review item container */
+.review-item { 
+    text-align: center;
+    max-width: 260px;
+}
+
+/* Star rating in reviews */
+.review-stars { 
+    color: #ffcc00;
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+/* Review heading/title */
+.review-heading { 
+    font-size: 17px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 8px;
+    /* line-height: 1.4: Space between text lines (140% of font size)
+       Improves readability of longer text */
+    line-height: 1.4;
+}
+
+/* Review body text */
+.review-text { 
+    font-size: 16px;
+    color: #555555;
+    line-height: 1.4;
+}
+
+/* Review carousel controls (prev/next arrow buttons) */
+.review-controls { 
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* Arrow buttons for carousel navigation */
+.review-arrow { 
+    background: transparent;
+    border: none;
+    font-size: 35px;
+    font-weight: 300;
+    color: #dbdbdb;
+    cursor: pointer;
+    /* transition: color 0.3s ease: Smoothly transitions arrow color on hover */
+    transition: color 0.3s ease;
+}
+
+.review-arrow:hover { 
+    color: #999999;
+}
 
 /* ============================================
-   FOOTER
-   ============================================ */
-.main-footer { background-color: #000000; color: #ffffff; padding: 60px 40px 20px 40px; font-family: Arial, sans-serif; margin-top: 50px; }
-.footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; max-width: 1400px; margin: 0 auto; }
-.footer-heading { font-size: 20px; font-weight: 500; margin-bottom: 20px; letter-spacing: 0.5px; }
-.footer-text { font-size: 15px; line-height: 1.6; color: #eeeeee; }
-.footer-list { list-style-type: disc; padding-left: 20px; margin: 0; }
-.footer-list li { margin-bottom: 12px; }
-.footer-list a { color: #ffffff; text-decoration: none; font-size: 15px; }
-.app-buttons { display: flex; gap: 15px; margin-bottom: 40px; }
-.app-btn { width: 130px; height: auto; border: 1px solid #ffffff; border-radius: 6px; }
-.get-in-touch { margin-bottom: 20px; }
-.social-icons { display: flex; gap: 20px; }
-.social-icons svg { width: 24px; height: 24px; fill: #ffffff; }
-.footer-bottom { max-width: 1400px; margin: 60px auto 0; padding-top: 20px; font-size: 12px; color: #cccccc; text-align: left; }
+   FOOTER SECTION
+   ============================================
+   Purpose: Bottom section with company info, links, and social media
+   Dark background (black) with white text */
+
+.main-footer { 
+    background-color: #000000;
+    color: #ffffff;
+    padding: 60px 40px 20px 40px;
+    font-family: Arial, sans-serif;
+    margin-top: 50px;
+}
+
+/* Footer grid layout: 4 columns for different footer content */
+.footer-grid { 
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Footer column heading */
+.footer-heading { 
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+}
+
+/* Footer text content */
+.footer-text { 
+    font-size: 15px;
+    line-height: 1.6;
+    color: #eeeeee;
+}
+
+/* Footer link lists: About, Quick Links, Help sections */
+.footer-list { 
+    /* list-style-type: disc: Shows bullet points before list items
+       disc = filled circle bullets
+       Other options: circle, square, none */
+    list-style-type: disc;
+    /* padding-left: 20px: Indents list items to make room for bullets */
+    padding-left: 20px;
+    margin: 0;
+}
+
+.footer-list li { 
+    margin-bottom: 12px;
+}
+
+.footer-list a { 
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+/* App download buttons container */
+.app-buttons { 
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+/* App store badge images */
+.app-btn { 
+    width: 130px;
+    height: auto;
+    border: 1px solid #ffffff;
+    /* border-radius: 6px: Rounds corners slightly (less rounded than badge pill shape)
+       Creates modern, subtle rounded corners */
+    border-radius: 6px;
+}
+
+/* "Get in Touch" heading styling */
+.get-in-touch { 
+    margin-bottom: 20px;
+}
+
+/* Social icons container: Facebook, Instagram, YouTube, TikTok */
+.social-icons { 
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons svg { 
+    width: 24px;
+    height: 24px;
+    /* fill: #ffffff: Fills SVG shape with white color
+       Used instead of stroke for solid icons */
+    fill: #ffffff;
+}
+
+/* Footer bottom: Copyright notice */
+.footer-bottom { 
+    max-width: 1400px;
+    margin: 60px auto 0;
+    padding-top: 20px;
+    font-size: 12px;
+    color: #cccccc;
+    text-align: left;
+}
 
 /* ============================================
-   FLOATING CART
-   ============================================ */
+   FLOATING CART BUTTON
+   ============================================
+   Purpose: Fixed position cart button for quick access
+   Remains visible at bottom-right as user scrolls */
+
 .floating-cart {
     position: fixed;
     bottom: 30px;
@@ -540,23 +1056,39 @@ body {
     background-color: #222222;
     width: 65px;
     height: 65px;
+    /* border-radius: 50%: Creates perfect circle
+       width = height = 65px, radius = 50% = circular button */
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     z-index: 10000;
+    /* transition: transform, background-color 0.3s ease: Animates both properties
+       transform: hover effect (scale up)
+       background-color: color change on hover
+       0.3s: smooth animation over 0.3 seconds */
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.floating-cart:hover { transform: scale(1.1); background-color: #000000; }
+.floating-cart:hover { 
+    /* transform: scale(1.1): Enlarges element by 10% on hover
+       1.1 = 110% size (10% larger) */
+    transform: scale(1.1);
+    background-color: #000000;
+}
 
 
 /* ============================================
-   TABLET (max-width: 768px)
-   ============================================ */
+   RESPONSIVE DESIGN: TABLET (max-width: 768px)
+   ============================================
+   Purpose: Adjust layout and styles for tablet screens
+   max-width: 768px = screens 768px wide and SMALLER get these styles
+   Media queries: CSS rule that applies styles based on device characteristics */
+
 @media screen and (max-width: 768px) {
 
+    /* Tablet header adjustments */
     .main-header {
         display: flex;
         justify-content: space-between;
@@ -565,13 +1097,18 @@ body {
         max-width: 100%;
     }
 
-    /* Show hamburger on LEFT */
+    /* Show hamburger button on TABLET (was hidden on desktop) */
     .hamburger-btn {
         display: flex;
+        /* order: 1: CSS Flexbox order property - controls visual order of flex items
+           order: 1 = hamburger appears first (left side)
+           order: 2 = logo appears second (center)
+           order: 3 = icons appear third (right side)
+           Allows reordering without changing HTML structure */
         order: 1;
     }
 
-    /* Logo in CENTER */
+    /* Logo centered position on tablet */
     .logo-container {
         order: 2;
         flex: 1;
@@ -579,61 +1116,185 @@ body {
         text-align: center;
     }
 
-    /* Icons on RIGHT */
+    /* Icons on right side */
     .header-right {
         order: 3;
         gap: 0;
     }
 
-    /* Hide horizontal nav — drawer handles it */
-    .menu-box { display: none; }
+    /* Hide horizontal navigation menu: drawer handles it on mobile */
+    .menu-box { 
+        display: none;
+    }
 
-    /* Hide profile icon — it's inside the drawer */
-    .desktop-only { display: none; }
+    /* Hide profile icon: available in drawer instead */
+    .desktop-only { 
+        display: none;
+    }
 
-    .icons-box { gap: 12px; }
+    .icons-box { 
+        gap: 12px;
+    }
 
-    .product-card { flex: none; width: calc(33.33% - 8px); max-width: none; }
-    .best-sellers-grid { grid-template-columns: repeat(3, 1fr); }
-    .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
-    .main-footer { padding: 40px 20px 20px 20px; }
-    .vlogger-title { font-size: 28px; }
-    .testimonials-title { font-size: 24px; }
-    .floating-cart { width: 55px; height: 55px; bottom: 20px; right: 20px; }
+    /* Product cards: 3 columns on tablet instead of 5 */
+    .product-card { 
+        flex: none;
+        width: calc(33.33% - 8px);
+        max-width: none;
+    }
+
+    /* Best sellers: 3 columns on tablet */
+    .best-sellers-grid { 
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Footer: 2 columns on tablet instead of 4 */
+    .footer-grid { 
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .main-footer { 
+        padding: 40px 20px 20px 20px;
+    }
+
+    .vlogger-title { 
+        font-size: 28px;
+    }
+
+    .testimonials-title { 
+        font-size: 24px;
+    }
+
+    .floating-cart { 
+        width: 55px;
+        height: 55px;
+        bottom: 20px;
+        right: 20px;
+    }
 }
 
-
 /* ============================================
-   MOBILE (max-width: 576px)
-   ============================================ */
+   RESPONSIVE DESIGN: MOBILE (max-width: 576px)
+   ============================================
+   Purpose: Optimize layout for small smartphone screens
+   max-width: 576px = screens 576px wide and SMALLER
+   Significant layout changes for tiny screens */
+
 @media screen and (max-width: 576px) {
 
-    .top-bar-dark { font-size: 11px; padding: 10px 8px; }
-    .second-bar { font-size: 13px; padding: 8px 15px; }
-    .main-header { padding: 12px 14px; }
-    .logo { font-size: 20px; }
+    /* Reduce padding on top bar for smaller screens */
+    .top-bar-dark { 
+        font-size: 11px;
+        padding: 10px 8px;
+    }
 
-    .product-card { width: calc(50% - 8px); }
-    .section-title { font-size: 18px; }
+    .second-bar { 
+        font-size: 13px;
+        padding: 8px 15px;
+    }
 
-    .best-sellers-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .item-title { font-size: 12px; min-height: auto; padding: 10px 8px 4px 8px; }
-    .item-price { font-size: 12px; padding: 8px; margin: 0 6px; }
-    .view-all-btn { font-size: 13px; padding: 10px 25px; }
+    .main-header { 
+        padding: 12px 14px;
+    }
 
-    .vlogger-title { font-size: 22px; }
-    .testimonials-title { font-size: 20px; padding: 0 15px; }
-    .global-stars { font-size: 18px; margin-bottom: 30px; }
-    .review-heading { font-size: 14px; }
-    .review-text { font-size: 13px; }
+    /* Reduce logo size on mobile */
+    .logo { 
+        font-size: 20px;
+    }
 
-    .footer-grid { grid-template-columns: 1fr; gap: 30px; }
-    .footer-heading { font-size: 16px; }
-    .footer-text { font-size: 13px; }
-    .footer-list a { font-size: 13px; }
-    .app-buttons { flex-wrap: wrap; }
-    .app-btn { width: 110px; }
-    .footer-bottom { font-size: 11px; text-align: center; margin-top: 30px; }
+    /* Product cards: 2 columns on mobile */
+    .product-card { 
+        width: calc(50% - 8px);
+    }
 
-    .floating-cart { width: 50px; height: 50px; bottom: 15px; right: 15px; }
+    .section-title { 
+        font-size: 18px;
+    }
+
+    /* Best sellers: 2 columns on mobile */
+    .best-sellers-grid { 
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .item-title { 
+        font-size: 12px;
+        min-height: auto;
+        padding: 10px 8px 4px 8px;
+    }
+
+    .item-price { 
+        font-size: 12px;
+        padding: 8px;
+        margin: 0 6px;
+    }
+
+    .view-all-btn { 
+        font-size: 13px;
+        padding: 10px 25px;
+    }
+
+    /* Testimonials adjustments */
+    .vlogger-title { 
+        font-size: 22px;
+    }
+
+    .testimonials-title { 
+        font-size: 20px;
+        padding: 0 15px;
+    }
+
+    .global-stars { 
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+
+    .review-heading { 
+        font-size: 14px;
+    }
+
+    .review-text { 
+        font-size: 13px;
+    }
+
+    /* Footer: 1 column on mobile (stacks vertically) */
+    .footer-grid { 
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .footer-heading { 
+        font-size: 16px;
+    }
+
+    .footer-text { 
+        font-size: 13px;
+    }
+
+    .footer-list a { 
+        font-size: 13px;
+    }
+
+    .app-buttons { 
+        flex-wrap: wrap;
+    }
+
+    .app-btn { 
+        width: 110px;
+    }
+
+    .footer-bottom { 
+        font-size: 11px;
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    /* Floating cart: smaller on mobile */
+    .floating-cart { 
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+    }
 }

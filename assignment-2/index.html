@@ -1,41 +1,72 @@
+<!-- DOCTYPE Declaration: Tells the browser this is an HTML5 document -->
 <!DOCTYPE html>
+
+<!-- Root HTML element with lang="en" attribute for language specification (SEO & accessibility) -->
 <html lang="en">
 <head>
+    <!-- Character encoding declaration: UTF-8 supports all international characters -->
     <meta charset="UTF-8">
+    
+    <!-- Viewport meta tag: Ensures responsive design works on mobile devices
+         - width=device-width: Sets viewport width to device screen width
+         - initial-scale=1.0: Sets initial zoom level to 100% -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Page title: Appears in browser tab and search engine results -->
     <title>Miss Rose</title>
+    
+    <!-- Links external CSS stylesheet for styling all HTML elements -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Top promotional bar with dark background color class 
+         This creates an announcement area for special offers (free delivery message) -->
     <div class="top-bar-dark">Advance Payment & Get Free Delivery 🚚</div>
+    
+    <!-- Wrapper div for centered layout of the second bar (best for responsive design) -->
     <div class="second-bar-wrapper">
-    <div class="second-bar">
-        <button class="arrow-btn">&#8249;</button>
-        <span>❤️ 700,000+ Happy Customers</span>
-        <button class="arrow-btn">&#8250;</button>
-    </div>
+        <!-- Second promotional bar showing customer satisfaction metric
+             This section shows a carousel element with navigation arrows -->
+        <div class="second-bar">
+            <!-- Left arrow button: allows users to scroll previous testimonials/content (HTML entity &#8249;) -->
+            <button class="arrow-btn">&#8249;</button>
+            
+            <!-- Text content showing happy customer count - provides social proof -->
+            <span>❤️ 700,000+ Happy Customers</span>
+            
+            <!-- Right arrow button: allows users to scroll next testimonials/content (HTML entity &#8250;) -->
+            <button class="arrow-btn">&#8250;</button>
+        </div>
     </div>
 
-
+    <!-- Main header container: Contains logo, navigation menu, and user account/cart icons
+         Typically uses flexbox or grid for horizontal layout -->
     <div class="main-header">
 
-        <!-- LEFT: Hamburger button (mobile only) -->
+        <!-- Hamburger button: Toggles side navigation menu on mobile devices
+             aria-label: Provides accessibility label for screen readers
+             id="hamburgerBtn": JavaScript hook to attach click event listeners -->
         <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Menu">
+            <!-- Three horizontal lines representing hamburger icon (created using CSS borders) -->
             <span></span>
             <span></span>
             <span></span>
         </button>
 
-        <!-- CENTER: Logo -->
+        <!-- Logo section: Center of the header containing brand name and tagline -->
         <div class="logo-container">
+            <!-- Main brand name heading -->
             <h1 class="logo">MISS RÔSE</h1>
+            <!-- Subtext describing brand: Professional makeup -->
             <span class="logo-sub">PROFESSIONAL MAKE-UP</span>
         </div>
 
-        <!-- RIGHT: Desktop nav + icons -->
+        <!-- Right side of header: Contains navigation menu and icon links -->
         <div class="header-right">
+            <!-- Navigation menu: Lists all main product categories (hidden on mobile, shown on desktop) -->
             <div class="menu-box" id="menuBox">
                 <ul>
+                    <!-- Each link represents a main product category in the navigation -->
                     <li><a href="#">SHOP</a></li>
                     <li><a href="#">NEW ARRIVALS</a></li>
                     <li><a href="#">DEALS</a></li>
@@ -46,23 +77,40 @@
                 </ul>
             </div>
 
+            <!-- Icons container: Holds search, user account, and shopping cart icons -->
             <div class="icons-box">
+                <!-- Search icon: SVG (Scalable Vector Graphics) - allows scaling without quality loss -->
                 <a href="#">
+                    <!-- SVG element: Inline vector graphic
+                         viewBox="0 0 24 24": Defines coordinate system for the icon
+                         fill="none" stroke="black": Creates outline style (no fill, black border)
+                         stroke-width="1.5": Line thickness of the icon -->
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.5">
+                        <!-- Circle element: Search magnifying glass circular part -->
                         <circle cx="11" cy="11" r="8"></circle>
+                        <!-- Line element: Search magnifying glass handle -->
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
                 </a>
+                
+                <!-- User profile/account icon: Hidden on mobile (class="desktop-only") -->
                 <a href="#" class="desktop-only">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.5">
+                        <!-- Path for user head/shoulders silhouette -->
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <!-- Circle for user head -->
                         <circle cx="12" cy="7" r="4"></circle>
                     </svg>
                 </a>
+                
+                <!-- Shopping cart icon: Allows users to access their cart -->
                 <a href="#">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.5">
+                        <!-- Path for cart container shape -->
                         <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <!-- Line for cart top edge -->
                         <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <!-- Path for cart handle -->
                         <path d="M16 10a4 4 0 0 1-8 0"></path>
                     </svg>
                 </a>
@@ -70,26 +118,42 @@
         </div>
     </div>
 
-    <!-- DARK OVERLAY behind the drawer -->
+    <!-- Dark overlay: Appears behind the side drawer to dim the background and focus on menu
+         Makes mobile navigation modal appear separate from main content
+         id="drawerOverlay": JavaScript hook to close drawer on overlay click -->
     <div class="drawer-overlay" id="drawerOverlay"></div>
 
-    <!-- SIDE DRAWER -->
+    <!-- Side drawer/mobile menu: Hidden by default, shown when hamburger button is clicked
+         Slides in from the left side, typically used for mobile navigation
+         id="sideDrawer": JavaScript hook for showing/hiding the drawer -->
     <div class="side-drawer" id="sideDrawer">
 
-        <!-- Drawer top bar: X + logo + icons -->
+        <!-- Drawer header: Top section with close button, logo, and icons -->
         <div class="drawer-header">
+            <!-- Close button (X): Closes the side drawer when clicked
+                 aria-label: Accessibility label for screen readers
+                 id="drawerCloseBtn": JavaScript hook for click events -->
             <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close Menu">&#10005;</button>
+            
+            <!-- Logo area inside drawer: Shows brand name and tagline -->
             <div class="drawer-logo-container">
+                <!-- Brand name for drawer -->
                 <span class="drawer-logo">MISS RÔSE</span>
+                <!-- Brand tagline for drawer -->
                 <span class="drawer-logo-sub">PROFESSIONAL MAKE-UP</span>
             </div>
+            
+            <!-- Icons in drawer header: Search and cart (same as desktop header) -->
             <div class="drawer-header-icons">
+                <!-- Search icon in drawer header -->
                 <a href="#">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.5">
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
                 </a>
+                
+                <!-- Cart icon in drawer header -->
                 <a href="#">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.5">
                         <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
@@ -100,9 +164,10 @@
             </div>
         </div>
 
-        <!-- Drawer nav links -->
+        <!-- Navigation links section: Contains main menu categories for mobile -->
         <nav class="drawer-nav">
             <ul>
+                <!-- Same product categories as desktop menu, optimized for vertical mobile layout -->
                 <li><a href="#">SHOP</a></li>
                 <li><a href="#">NEW ARRIVALS</a></li>
                 <li><a href="#">DEALS</a></li>
@@ -113,22 +178,32 @@
             </ul>
         </nav>
 
-        <!-- Drawer bottom: Log in + social icons -->
+        <!-- Drawer footer: Bottom section with login and social media icons -->
         <div class="drawer-footer">
+            <!-- Login link: Allows users to access their account -->
             <a href="#" class="drawer-login">
+                <!-- User icon for login -->
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.5">
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                     <circle cx="12" cy="7" r="4"></circle>
                 </svg>
+                <!-- Login text -->
                 <span>Log in</span>
             </a>
+            
+            <!-- Social media icons: Links to brand social media pages -->
             <div class="drawer-social">
+                <!-- Facebook icon: Links to Facebook page -->
                 <a href="#">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="#111"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6c1.06 0 2.12.19 2.12.19V8.5h-1.2c-1.18 0-1.55.73-1.55 1.48V12h2.7l-.43 3h-2.27v6.8c4.56-.93 8-4.96 8-9.8z"/></svg>
                 </a>
+                
+                <!-- Instagram icon: Links to Instagram page -->
                 <a href="#">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="#111"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5zM12 7.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zm5.25-3a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.25 6.5z"/></svg>
                 </a>
+                
+                <!-- YouTube icon: Links to YouTube channel -->
                 <a href="#">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="#111"><path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3z"/></svg>
                 </a>
@@ -137,46 +212,70 @@
     </div>
 
 
+    <!-- Banner image container: Displays a large featured image for promotional campaign -->
     <div class="banner-container">
+        <!-- Image tag: Shows Miss Rose sale banner
+             alt text: Accessibility description for screen readers -->
         <img src="banner.jpg" alt="Miss Rose Sale Banner" class="banner-image">
     </div>
 
+<!-- Section wrapper for deals: Wrapper div for better margin/padding control -->
 <div class="deals-section-wrapper">
+    <!-- Deals section: Contains featured deals/offers grid -->
     <div class="deals-section">
+        <!-- Section title/heading: Large heading identifying this section as "DEALS" -->
         <h2 class="section-title">DEALS</h2>
         
+        <!-- Cards container: CSS Grid or Flexbox layout to display products side by side -->
         <div class="cards-container">
+            <!-- Product card 1: Individual deal product
+                 Each card contains image, title, and price information -->
             <div class="product-card">
+                <!-- Product image -->
                 <img src="deal1.jpg" alt="Bridal Deal">
+                <!-- Product title/name -->
                 <h3 class="product-title">Bridal Deal</h3>
+                <!-- Product price -->
                 <p class="product-price">Rs 4,999.00</p>
             </div>
 
+            <!-- Product card 2: Deal with sale badge
+                 Uses span with class="sale-badge" to show discount label -->
             <div class="product-card">
+                <!-- Sale badge: Shows that this product is on sale -->
                 <span class="sale-badge">Sale</span>
+                <!-- Product image -->
                 <img src="deal2.jpg" alt="Winter End Deal">
+                <!-- Product title -->
                 <h3 class="product-title">Winter End Deal</h3>
+                <!-- Price with strikethrough old price and new discounted price
+                     <del> tag shows deleted/original price
+                     New price shown after the strikethrough -->
                 <p class="product-price"><del>Rs 1,700.00</del> Rs 799.00</p>
             </div>
 
+            <!-- Product card 3: Regular deal without sale badge -->
             <div class="product-card">
                 <img src="deal3.jpg" alt="Regular Deal">
                 <h3 class="product-title">REGULAR DEAL</h3>
                 <p class="product-price">Rs 999.00</p>
             </div>
 
+            <!-- Product card 4: Face-specific deal -->
             <div class="product-card">
                 <img src="deal4.jpg" alt="Face Deal">
                 <h3 class="product-title">Face Deal</h3>
                 <p class="product-price">Rs 2,699.00</p>
             </div>
 
+            <!-- Product card 5: Eye makeup deal -->
             <div class="product-card">
                 <img src="deal5.jpg" alt="EYE CONIC GLAM">
                 <h3 class="product-title">EYE CONIC GLAM</h3>
                 <p class="product-price">Rs 999.00</p>
             </div>
 
+            <!-- Product card 6: Basic deal bundle -->
             <div class="product-card">
                 <img src="deal6.jpg" alt="BASIC DEAL">
                 <h3 class="product-title">BASIC DEAL</h3>
@@ -184,29 +283,45 @@
             </div>
         </div>
 
+        <!-- View all button wrapper: Centers the "View all" button below product cards -->
         <div class="view-all-wrapper">
+            <!-- View all link button: Takes users to full deals page with pagination/infinite scroll -->
             <a href="#" class="view-all-btn">View all</a>
         </div>
         
     </div>
 </div>
 
+<!-- Best sellers section: Features top-selling products grid
+     This section is separate from Deals and has a different layout structure -->
 <div class="best-sellers-section">
+    <!-- Section title: Identifies this section as "Best Sellers" -->
     <h2 class="section-title">Best Sellers</h2>
 
+    <!-- Grid layout for best seller cards: Responsive grid that changes columns based on screen size -->
     <div class="best-sellers-grid">
         
+        <!-- Best seller card 1: Product card with image swap on hover, ratings, and sale badge -->
         <div class="best-seller-card">
+            <!-- Sale badge: Indicates product is on sale/discounted -->
             <span class="sale-badge">Sale</span>
+            <!-- Product image container: Holds primary and hover images -->
             <div class="product-image-container">
+                <!-- Primary image: Shown by default -->
                 <img src="best1.jpg" alt="Fruity Lip Balm" class="primary-img">
+                <!-- Hover image: Shown when user hovers over the card (CSS hover effect) -->
                 <img src="best1-hover.jpg" alt="Fruity Lip Balm Alt" class="hover-img">
             </div>
+            <!-- Product title/name -->
             <h3 class="item-title">Fruity Lip Balm</h3>
+            <!-- Star rating display: Uses Unicode star characters (&#9733;) for visual rating
+                 Followed by number of reviews in parentheses -->
             <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733; <span class="reviews">(1)</span></div>
+            <!-- Product price with discount: Original price in <del> tag, new price after -->
             <p class="item-price"><del>Rs 700.00</del> Rs 399.00</p>
         </div>
 
+        <!-- Best seller card 2: Similar structure to card 1 with different product details -->
         <div class="best-seller-card">
             <span class="sale-badge">Sale</span>
             <div class="product-image-container">
@@ -218,6 +333,7 @@
             <p class="item-price"><del>Rs 800.00</del> Rs 599.00</p>
         </div>
 
+        <!-- Best seller card 3: Hydrating product with high review count -->
         <div class="best-seller-card">
             <span class="sale-badge">Sale</span>
             <div class="product-image-container">
@@ -229,6 +345,7 @@
             <p class="item-price"><del>Rs 650.00</del> Rs 499.00</p>
         </div>
 
+        <!-- Best seller card 4: Liquid concealer product -->
         <div class="best-seller-card">
             <span class="sale-badge">Sale</span>
             <div class="product-image-container">
@@ -240,6 +357,7 @@
             <p class="item-price"><del>Rs 799.00</del> Rs 399.00</p>
         </div>
 
+        <!-- Best seller card 5: Lip tint product -->
         <div class="best-seller-card">
             <span class="sale-badge">Sale</span>
             <div class="product-image-container">
@@ -251,6 +369,7 @@
             <p class="item-price"><del>Rs 650.00</del> Rs 499.00</p>
         </div>
 
+        <!-- Best seller card 6: Mascara product (note: similar structure repeated for best sellers) -->
         <div class="best-seller-card">
             <span class="sale-badge">Sale</span>
             <div class="product-image-container">
@@ -262,6 +381,7 @@
             <p class="item-price"><del>Rs 1,000.00</del> Rs 549.00</p>
         </div>
 
+        <!-- Best seller card 7: Under Eye Marker -->
         <div class="best-seller-card">
             <span class="sale-badge">Sale</span>
             <div class="product-image-container">
@@ -273,6 +393,7 @@
             <p class="item-price"><del>Rs 500.00</del> Rs 349.00</p>
         </div>
 
+        <!-- Best seller card 8: Natural foundation product -->
         <div class="best-seller-card">
             <span class="sale-badge">Sale</span>
             <div class="product-image-container">
@@ -284,6 +405,7 @@
             <p class="item-price"><del>Rs 2,000.00</del> Rs 749.00</p>
         </div>
 
+        <!-- Best seller card 9: Primer product -->
         <div class="best-seller-card">
             <span class="sale-badge">Sale</span>
             <div class="product-image-container">
@@ -295,6 +417,7 @@
             <p class="item-price"><del>Rs 1,250.00</del> Rs 999.00</p>
         </div>
 
+        <!-- Best seller card 10: Eyeliner/stamp liner -->
         <div class="best-seller-card">
             <span class="sale-badge">Sale</span>
             <div class="product-image-container">
@@ -306,6 +429,7 @@
             <p class="item-price"><del>Rs 999.00</del> Rs 549.00</p>
         </div>
 
+        <!-- Best seller card 11: Loose powder -->
         <div class="best-seller-card">
             <span class="sale-badge">Sale</span>
             <div class="product-image-container">
@@ -317,6 +441,7 @@
             <p class="item-price"><del>Rs 999.00</del> Rs 699.00</p>
         </div>
 
+        <!-- Best seller card 12: Another concealer variant -->
         <div class="best-seller-card">
             <span class="sale-badge">Sale</span>
             <div class="product-image-container">
@@ -328,6 +453,7 @@
             <p class="item-price"><del>Rs 799.00</del> Rs 349.00</p>
         </div>
 
+        <!-- Best seller card 13: Leopard mascara -->
         <div class="best-seller-card">
             <span class="sale-badge">Sale</span>
             <div class="product-image-container">
@@ -339,6 +465,7 @@
             <p class="item-price"><del>Rs 1,500.00</del> Rs 599.00</p>
         </div>
 
+        <!-- Best seller card 14: Premium airbrush foundation -->
         <div class="best-seller-card">
             <span class="sale-badge">Sale</span>
             <div class="product-image-container">
@@ -350,6 +477,7 @@
             <p class="item-price"><del>Rs 2,500.00</del> Rs 999.00</p>
         </div>
 
+        <!-- Best seller card 15: Water jelly tint -->
         <div class="best-seller-card">
             <span class="sale-badge">Sale</span>
             <div class="product-image-container">
@@ -361,6 +489,7 @@
             <p class="item-price"><del>Rs 849.00</del> Rs 599.00</p>
         </div>
 
+        <!-- Best seller card 16: BB cream -->
         <div class="best-seller-card">
             <span class="sale-badge">Sale</span>
             <div class="product-image-container">
@@ -372,6 +501,7 @@
             <p class="item-price"><del>Rs 1,000.00</del> Rs 599.00</p>
         </div>
 
+        <!-- Best seller card 17: Hand cream -->
         <div class="best-seller-card">
             <span class="sale-badge">Sale</span>
             <div class="product-image-container">
@@ -383,6 +513,7 @@
             <p class="item-price"><del>Rs 999.00</del> Rs 499.00</p>
         </div>
 
+        <!-- Best seller card 18: Liquid illuminator -->
         <div class="best-seller-card">
             <span class="sale-badge">Sale</span>
             <div class="product-image-container">
@@ -394,6 +525,7 @@
             <p class="item-price"><del>Rs 1,299.00</del> Rs 999.00</p>
         </div>
 
+        <!-- Best seller card 19: Kajal stick -->
         <div class="best-seller-card">
             <span class="sale-badge">Sale</span>
             <div class="product-image-container">
@@ -405,6 +537,7 @@
             <p class="item-price"><del>Rs 500.00</del> Rs 349.00</p>
         </div>
 
+        <!-- Best seller card 20: Matte foundation -->
         <div class="best-seller-card">
             <span class="sale-badge">Sale</span>
             <div class="product-image-container">
@@ -416,7 +549,9 @@
             <p class="item-price"><del>Rs 750.00</del> Rs 549.00</p>
         </div>
 
+        <!-- Best seller card 21: Two-way cake (note: sold out badge instead of "Sale") -->
         <div class="best-seller-card">
+            <!-- Sold out badge: Indicates product is out of stock -->
             <span class="sale-badge">Sold out</span>
             <div class="product-image-container">
                 <img src="best21.jpg" alt="3D Moisturizing Whitening Two Way Cake" class="primary-img">
@@ -427,6 +562,7 @@
             <p class="item-price"><del>Rs 999.00</del> Rs 699.00</p>
         </div>
 
+        <!-- Best seller card 22: Eyeliner (sold out) -->
         <div class="best-seller-card">
             <span class="sale-badge">Sold out</span>
             <div class="product-image-container">
@@ -438,6 +574,7 @@
             <p class="item-price"><del>Rs 499.00</del> Rs 349.00</p>
         </div>
 
+        <!-- Best seller card 23: Base primer -->
         <div class="best-seller-card">
             <span class="sale-badge">Sale</span>
             <div class="product-image-container">
@@ -449,6 +586,7 @@
             <p class="item-price"><del>Rs 2,500.00</del> Rs 999.00</p>
         </div>
 
+        <!-- Best seller card 24: Makeup fixer mist -->
         <div class="best-seller-card">
             <span class="sale-badge">Sale</span>
             <div class="product-image-container">
@@ -460,6 +598,7 @@
             <p class="item-price"><del>Rs 2,000.00</del> Rs 999.00</p>
         </div>
 
+        <!-- Best seller card 25: Blush 2-in-1 (sold out) -->
         <div class="best-seller-card">
             <span class="sale-badge">Sold out</span>
             <div class="product-image-container">
@@ -473,51 +612,76 @@
 
     </div> 
     
+    <!-- View all button wrapper: Centers the "View all" button below best seller cards -->
     <div class="view-all-wrapper">
+        <!-- View all link button: Takes users to complete best sellers page with pagination/infinite scroll -->
         <a href="#" class="view-all-btn">View all</a>
     </div>
 
 </div>
 
+<!-- Vlogger section: Contains influencer/beauty blogger content
+     This section showcases content from vloggers/influencers to build credibility -->
+<div class="vlogger-section">
+    <!-- Section title: Identifies this section as content from vloggers/influencers -->
+    <h2 class="vlogger-title">Vlogger Corner</h2>
+</div>
 
-    <div class="vlogger-section">
-        <h2 class="vlogger-title">Vlogger Corner</h2>
-    </div>
+<!-- Testimonials section: Contains customer reviews and ratings
+     This builds trust by showing real customer feedback -->
+<div class="testimonials-section">
+    <!-- Section title: Introduces testimonials from customers -->
+    <h3 class="testimonials-title">Let customers speak for us</h3>
+    
+    <!-- Global star rating: Shows overall product/company rating across all reviews (5 stars) -->
+    <div class="global-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
 
-    <div class="testimonials-section">
-        <h3 class="testimonials-title">Let customers speak for us</h3>
-        <div class="global-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-
+<!-- Reviews wrapper: Container for the entire reviews carousel/slider section -->
 <div class="reviews-wrapper">
+    <!-- Reviews track: The scrollable container that holds review groups
+         This allows horizontal scrolling or carousel functionality via CSS or JavaScript -->
     <div class="reviews-track">
         
+        <!-- Review group 1: A group of review items that may be visible at once -->
         <div class="review-group">
+            <!-- Review item 1: Individual customer review -->
             <div class="review-item">
+                <!-- Star rating for this review: 5 full stars using HTML entities -->
                 <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <!-- Review heading/summary: Main subject of the review -->
                 <p class="review-heading">Excellent</p>
+                <!-- Review text: Detailed review content from the customer -->
                 <p class="review-text">Excellent</p>
+                <!-- Reviewer name: Name of the person who wrote the review -->
                 <p class="reviewer-name">Anonymous</p>
+                <!-- Review product image: Shows the product that was reviewed -->
                 <img src="deal4.jpg" alt="Review Product" class="review-product-img">
             </div>
 
+            <!-- Review item 2: Another customer review -->
             <div class="review-item">
                 <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                 <p class="review-heading">Meri skin buhat achi lag rehi...</p>
+                <!-- Review text with <br> tag for line break: Customer feedback in multiple lines -->
                 <p class="review-text">Meri skin buhat achi lag rehi<br>thi or light wight ha bus</p>
                 <p class="reviewer-name">Anonymous</p>
                 <img src="deal2.jpg" alt="Review Product" class="review-product-img">
             </div>
 
+            <!-- Review item 3: Eyeliner product review -->
             <div class="review-item">
                 <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                 <p class="review-heading">Eyeliner review</p>
                 <p class="review-text">Best product love it</p>
+                <!-- Named reviewer: This review has a named customer -->
                 <p class="reviewer-name">Tayyab Khan</p>
                 <img src="best10.jpg" alt="Review Product" class="review-product-img">
             </div>
         </div>
 
+        <!-- Review group 2: Another group of reviews (for carousel pagination or infinite scroll) -->
         <div class="review-group">
+            <!-- Review item 1 (in group 2): Duplicate/similar reviews for carousel -->
             <div class="review-item">
                 <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                 <p class="review-heading">Excellent</p>
@@ -526,6 +690,7 @@
                 <img src="deal4.jpg" alt="Review Product" class="review-product-img">
             </div>
 
+            <!-- Review item 2 (in group 2): Another review in the second carousel group -->
             <div class="review-item">
                 <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                 <p class="review-heading">Meri skin buhat achi lag rehi...</p>
@@ -534,6 +699,7 @@
                 <img src="deal2.jpg" alt="Review Product" class="review-product-img">
             </div>
 
+            <!-- Review item 3 (in group 2): Eyeliner review in second group -->
             <div class="review-item">
                 <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                 <p class="review-heading">Eyeliner review</p>
@@ -547,81 +713,140 @@
 </div>
     </div>
 
+<!-- Review carousel controls: Buttons to navigate through reviews carousel -->
 <div class="review-controls">
+    <!-- Previous arrow button: Navigates to previous set of reviews
+         &#10094; is the left arrow HTML entity -->
     <button class="review-arrow">&#10094;</button>
+    
+    <!-- Next arrow button: Navigates to next set of reviews
+         &#10095; is the right arrow HTML entity -->
     <button class="review-arrow">&#10095;</button>
 </div>
 
 
+    <!-- Main footer section: Contains company information, links, and social media
+         Black background footer extends to the bottom of the page
+         Uses semantic <footer> tag for accessibility -->
     <footer class="main-footer">
-    <div class="footer-grid">
-        <div class="footer-col">
-            <h4 class="footer-heading">ABOUT US</h4>
-            <p class="footer-text">Miss Rose Official Pakistan is providing 100% original Miss Rose Products across Pakistan. We ensure the quality and authenticity of our products.</p>
-        </div>
-
-        <div class="footer-col">
-            <h4 class="footer-heading">Quick Links</h4>
-            <ul class="footer-list">
-                <li><a href="#">Eye Makeup</a></li>
-                <li><a href="#">Face Makeup</a></li>
-                <li><a href="#">Lip Makeup</a></li>
-                <li><a href="#">Accessories and extra</a></li>
-                <li><a href="#">MISS ROSE Deals</a></li>
-                <li><a href="#">Blog</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-col">
-            <h4 class="footer-heading">Help</h4>
-            <ul class="footer-list">
-                <li><a href="#">Returns & Exchanges</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Track My Package</a></li>
-                <li><a href="#">Our App's</a></li>
-                <li><a href="#">FAQs</a></li>
-                <li><a href="#">Contact Us</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-col">
-            <h4 class="footer-heading">DOWNLOAD OUR APP</h4>
-            <div class="app-buttons">
-                <a href="#"><img src="google-play.jpg" alt="Get it on Google Play" class="app-btn"></a>
-                <a href="#"><img src="app-store.jpg" alt="Download on the App Store" class="app-btn"></a>
-            </div>
+        <!-- Footer grid layout: 4-column layout for different footer sections
+             Uses CSS Grid for responsive multi-column arrangement -->
+        <div class="footer-grid">
             
-            <h4 class="footer-heading get-in-touch">GET IN TOUCH</h4>
-            <div class="social-icons">
-                <a href="#">
-                    <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6c1.06 0 2.12.19 2.12.19V8.5h-1.2c-1.18 0-1.55.73-1.55 1.48V12h2.7l-.43 3h-2.27v6.8c4.56-.93 8-4.96 8-9.8z"/></svg>
-                </a>
-                <a href="#">
-                    <svg viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5zM12 7.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zm5.25-3a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.25 6.5z"/></svg>
-                </a>
-                <a href="#">
-                    <svg viewBox="0 0 24 24"><path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3z"/></svg>
-                </a>
-                <a href="#">
-                    <svg viewBox="0 0 24 24"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93v7.06c-.01 1.94-.69 3.84-1.95 5.3-1.4 1.61-3.4 2.65-5.55 2.89-2.28.25-4.66-.27-6.53-1.59-1.85-1.31-3.08-3.41-3.28-5.69-.21-2.42.66-4.91 2.37-6.6 1.7-1.68 4.14-2.5 6.53-2.21 0 1.45 0 2.89.01 4.34-.84-.1-1.72.06-2.46.51-.73.45-1.28 1.18-1.5 2.01-.22.84-.04 1.76.47 2.45.52.68 1.34 1.1 2.19 1.19.89.08 1.8-.18 2.48-.75.66-.56 1.1-1.37 1.18-2.24V.02z"/></svg>
-                </a>
+            <!-- Footer column 1: About us section
+                 Provides company description and brand information -->
+            <div class="footer-col">
+                <!-- Column heading: Identifies this as company information -->
+                <h4 class="footer-heading">ABOUT US</h4>
+                <!-- Company description: Explains brand credibility and product authenticity -->
+                <p class="footer-text">Miss Rose Official Pakistan is providing 100% original Miss Rose Products across Pakistan. We ensure the quality and authenticity of our products.</p>
+            </div>
+
+            <!-- Footer column 2: Quick navigation links
+                 Provides direct links to main product categories -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Quick Links</h4>
+                <!-- Unordered list of category links for easy navigation -->
+                <ul class="footer-list">
+                    <!-- Each list item contains a category link -->
+                    <li><a href="#">Eye Makeup</a></li>
+                    <li><a href="#">Face Makeup</a></li>
+                    <li><a href="#">Lip Makeup</a></li>
+                    <li><a href="#">Accessories and extra</a></li>
+                    <li><a href="#">MISS ROSE Deals</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+
+            <!-- Footer column 3: Help and support links
+                 Provides customer service and policy information -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Help</h4>
+                <!-- List of help/support related links -->
+                <ul class="footer-list">
+                    <li><a href="#">Returns & Exchanges</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Track My Package</a></li>
+                    <li><a href="#">Our App's</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Footer column 4: App download and social media
+                 Promotes mobile app and social media channels -->
+            <div class="footer-col">
+                <!-- App download section: Provides buttons for app store links -->
+                <h4 class="footer-heading">DOWNLOAD OUR APP</h4>
+                <!-- Container for app store buttons -->
+                <div class="app-buttons">
+                    <!-- Google Play Store link with badge image -->
+                    <a href="#"><img src="google-play.jpg" alt="Get it on Google Play" class="app-btn"></a>
+                    <!-- Apple App Store link with badge image -->
+                    <a href="#"><img src="app-store.jpg" alt="Download on the App Store" class="app-btn"></a>
+                </div>
+                
+                <!-- Social media section heading -->
+                <h4 class="footer-heading get-in-touch">GET IN TOUCH</h4>
+                <!-- Social media icons container: Horizontal flex layout for social icons -->
+                <div class="social-icons">
+                    <!-- Facebook icon link -->
+                    <a href="#">
+                        <!-- SVG icon with Facebook logo -->
+                        <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6c1.06 0 2.12.19 2.12.19V8.5h-1.2c-1.18 0-1.55.73-1.55 1.48V12h2.7l-.43 3h-2.27v6.8c4.56-.93 8-4.96 8-9.8z"/></svg>
+                    </a>
+                    <!-- Instagram icon link -->
+                    <a href="#">
+                        <!-- SVG icon with Instagram logo -->
+                        <svg viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5zM12 7.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zm5.25-3a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.25 6.5z"/></svg>
+                    </a>
+                    <!-- YouTube icon link -->
+                    <a href="#">
+                        <!-- SVG icon with YouTube logo -->
+                        <svg viewBox="0 0 24 24"><path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3z"/></svg>
+                    </a>
+                    <!-- TikTok icon link -->
+                    <a href="#">
+                        <!-- SVG icon with TikTok logo -->
+                        <svg viewBox="0 0 24 24"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93v7.06c-.01 1.94-.69 3.84-1.95 5.3-1.4 1.61-3.4 2.65-5.55 2.89-2.28.25-4.66-.27-6.53-1.59-1.85-1.31-3.08-3.41-3.28-5.69-.21-2.42.66-4.91 2.37-6.6 1.7-1.68 4.14-2.5 6.53-2.21 0 1.45 0 2.89.01 4.34-.84-.1-1.72.06-2.46.51-.73.45-1.28 1.18-1.5 2.01-.22.84-.04 1.76.47 2.45.52.68 1.34 1.1 2.19 1.19.89.08 1.8-.18 2.48-.75.66-.56 1.1-1.37 1.18-2.24V.02z"/></svg>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="footer-bottom">
-        <p>&copy; 2026, MISSROSE.PK Designed & Developed by TRICASOL, LLC</p>
-    </div>
-</footer>
+        <!-- Footer bottom section: Copyright and attribution
+             Provides copyright information and developer credit -->
+        <div class="footer-bottom">
+            <!-- Copyright notice with year and company attribution -->
+            <p>&copy; 2026, MISSROSE.PK Designed & Developed by TRICASOL, LLC</p>
+        </div>
+    </footer>
 
-<a href="#" class="floating-cart">
-    <svg viewBox="0 0 24 24" width="28" height="28" fill="white">
-        <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
-    </svg>
-</a>
+    <!-- Floating cart button: Fixed position button for easy cart access
+         Positioned at bottom-right corner with circular design
+         Provides quick access to shopping cart from any page location -->
+    <a href="#" class="floating-cart">
+        <!-- SVG shopping cart icon in white color
+             viewBox defines coordinate system for scalable icon
+             width/height set fixed size, fill="white" makes icon white -->
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="white">
+            <!-- SVG path element: Draws the shopping cart icon shape -->
+            <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+        </svg>
+    </a>
 
-<!-- JAVASCRIPT — side drawer -->
-<script src="script.js"></script>
+    <!-- External jQuery library: Provides utility functions for DOM manipulation and animations
+         Available from CDN (Content Delivery Network) at code.jquery.com
+         Version 3.7.1 is the latest stable release -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JavaScript file: Contains custom functionality for this project
+         - Handles hamburger menu toggle
+         - Manages side drawer open/close
+         - Carousel/slider functionality
+         - Event listeners and interactions -->
+    <!-- JAVASCRIPT — side drawer -->
+    <script src="script.js"></script>
 
 </body>
 </html>

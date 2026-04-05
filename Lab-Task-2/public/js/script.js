@@ -3,14 +3,14 @@ const sideDrawer    = document.getElementById('sideDrawer');
 const drawerOverlay = document.getElementById('drawerOverlay');
 const drawerCloseBtn = document.getElementById('drawerCloseBtn');
 
-// Open the drawer  - event handler fn
+// Open the drawer
 function openDrawer() {
     sideDrawer.classList.add('drawer-open');
     drawerOverlay.classList.add('overlay-active');
     document.body.style.overflow = 'hidden'; // Prevent page scroll while drawer is open
 }
 
-// Close the drawer  - event handler fn
+// Close the drawer
 function closeDrawer() {
     sideDrawer.classList.remove('drawer-open');
     drawerOverlay.classList.remove('overlay-active');
