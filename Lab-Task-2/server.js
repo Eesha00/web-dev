@@ -1,10 +1,11 @@
-// Import the express module
-let express = require("express");
+// Import the express module - load express lib
+let express = require("express"); //create express app
 
 // Initialize an express application
+//creates server app
 let app = express();
 
-// Set EJS as the templating engine
+// Set EJS as the templating engine - render views 
 app.set("view engine", "ejs");
 
 // Serve static files from the 'public' directory
